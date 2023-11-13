@@ -1,0 +1,45 @@
+<div class="container">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label>Nom Aliment en tapant</label>
+      <input
+        #nom
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        class="form-control"
+      />
+    </div>
+  </form>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Calorie</th>
+          <th>Glucide</th>
+          <th>Lipide</th>
+          <th>Proteine</th>
+          <th>Fibre</th>
+          <th>Date Création</th>
+          <th>Famille</th>
+        </tr>
+        <tbody *ngFor="let aliment of aliments | searchFilter: searchTerm ">
+          <tr>
+            <td>{{ aliment.idAliment }}</td>
+            <td>{{ aliment.nomAliment }}</td>
+            <td>{{ aliment.calorieAliment }}</td>
+            <td>{{ aliment.glucideAliment }}</td>
+            <td>{{ aliment.lipideAliment }}</td>
+            <td>{{ aliment.proteineAliment }}</td>
+            <td>{{ aliment.fibreAliment }}</td>
+            <td>{{ aliment.dateCreation | date : "dd/MM/yyyy" }}</td>
+
+            <td>{{ aliment.famille.nomFam }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

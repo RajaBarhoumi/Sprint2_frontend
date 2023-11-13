@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label>Familles </label>
+    <select
+      class="form-control form-control-lg"
+      id="idFam"
+      name="idFam"
+      [(ngModel)]="IdFamille"
+      (change)="onChange()"
+    >
+      <option *ngFor="let fam of familles" value="{{ fam.idFam }}">
+        {{ fam.nomFam }}
+      </option>
+    </select>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Calorie</th>
+          <th>Glucide</th>
+          <th>Lipide</th>
+          <th>Proteine</th>
+          <th>Fibre</th>
+          <th>Date Création</th>
+          <th>Famille</th>
+        </tr>
+        <tbody *ngFor="let aliment of aliments">
+          <tr>
+            <td>{{ aliment.idAliment }}</td>
+            <td>{{ aliment.nomAliment }}</td>
+            <td>{{ aliment.calorieAliment }}</td>
+            <td>{{ aliment.glucideAliment }}</td>
+            <td>{{ aliment.lipideAliment }}</td>
+            <td>{{ aliment.proteineAliment }}</td>
+            <td>{{ aliment.fibreAliment }}</td>
+            <td>{{ aliment.dateCreation | date : "dd/MM/yyyy" }}</td>
+
+            <td>{{ aliment.famille.nomFam }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

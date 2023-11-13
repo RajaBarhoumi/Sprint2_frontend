@@ -1,0 +1,96 @@
+<div class="container">
+  <div>
+    <h2>Modifier un Aliment :</h2>
+  </div>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Aliment</label>
+      <input
+        readonly
+        type="text"
+        [(ngModel)]="currentAliment.idAliment"
+        name="idAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Aliment</label>
+      <input
+        type="text"
+        [(ngModel)]="currentAliment.nomAliment"
+        name="nomAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Calorie Aliment</label>
+      <input
+        type="number"
+        [(ngModel)]="currentAliment.calorieAliment"
+        name="calorieAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Glucide Aliment</label>
+      <input
+        type="number"
+        [(ngModel)]="currentAliment.glucideAliment"
+        name="glucideAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Lipide Aliment</label>
+      <input
+        type="number"
+        [(ngModel)]="currentAliment.lipideAliment"
+        name="lipideAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Proteine Aliment</label>
+      <input
+        type="number"
+        [(ngModel)]="currentAliment.proteineAliment"
+        name="proteineAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Fibre Aliment</label>
+      <input
+        type="number"
+        [(ngModel)]="currentAliment.fibreAliment"
+        name="fibreAliment"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input
+        type="date"
+        [ngModel]="currentAliment.dateCreation | date : 'yyyy-MM-dd'"
+        (ngModelChange)="currentAliment.dateCreation = $event"
+        name="dateCreation"
+        class="form-control"
+      />
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Famille</label>
+        <select class="form-control form-control-lg" id="idFam" name="idFam"
+        [(ngModel)]="updatedFamId">
+        <option *ngFor="let fam of familles" [value]="fam.idFam" >
+        {{fam.nomFam}}
+        </option>
+        </select>
+        </div>
+    <div class="mt-2">
+      <button type="submit" (click)="updateAliment()" class="btn btn-success">
+        Modifier
+      </button>
+      <div></div>
+    </div>
+  </form>
+</div>
