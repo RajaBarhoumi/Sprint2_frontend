@@ -65,7 +65,7 @@
               routerLink="login"
               >login</a
             >
-            <a *ngIf="authService.isloggedIn" class="dropdown-item" >logout</a>
+            <a *ngIf="authService.isloggedIn" class="dropdown-item" (click) = "onLogout()">logout</a>
             <a class="dropdown-item" href="#">Profile</a>
           </div>
         </li>

@@ -7,17 +7,21 @@ import { RecherecheParFamilleComponent } from './rechereche-par-famille/recherec
 import { RecherecheParNomComponent } from './rechereche-par-nom/rechereche-par-nom.component';
 import { ListeFamillesComponent } from './liste-familles/liste-familles.component';
 import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AlimentGuard } from './aliment.guard';
 
 
 
 const routes: Routes = [
   {path: "aliments", component : AlimentsComponent},
-  {path: "add-aliment", component : AddAlimentsComponent},
+  {path: "add-aliment", component : AddAlimentsComponent, canActivate:[AlimentGuard]},
   {path: "updateAliment/:id", component : UpdateAlimentComponent},
   {path: "rechercheParFamille", component : RecherecheParFamilleComponent},
   {path: "rechercheParNom", component : RecherecheParNomComponent},
   {path: "listeFamilles", component : ListeFamillesComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'app-forbidden', component: ForbiddenComponent},
+
 
   { path: "", redirectTo: "aliments", pathMatch: "full" }
 

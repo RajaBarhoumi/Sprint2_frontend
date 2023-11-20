@@ -15,6 +15,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListeFamillesComponent } from './liste-familles/liste-familles.component';
 import { UpdateFamilleComponent } from './update-famille/update-famille.component';
 import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 
@@ -31,6 +32,7 @@ import { LoginComponent } from './login/login.component';
     ListeFamillesComponent,
     UpdateFamilleComponent,
     LoginComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,
