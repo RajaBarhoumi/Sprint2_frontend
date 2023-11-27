@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Aliment } from '../model/aliment.model';
+import { Image } from '../model/image.model';
 import { AlimentService } from '../services/aliment.service';
 import { AuthService } from '../services/auth.service';
 
@@ -10,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class AlimentsComponent implements OnInit {
   aliments?: Aliment[];
+  apiurl:string='http://localhost:8081/aliments/api';
 
   ngOnInit(): void {
     this.chargerAliments();
@@ -21,9 +23,9 @@ export class AlimentsComponent implements OnInit {
 
   chargerAliments(){
     this.alimentService.listeAliments().subscribe(alims => {
-    console.log(alims);
-    this.aliments = alims;
-    }); 
+      this.aliments = alims;
+      });
+      
     }
 
   supprimerAliment(a: Aliment)

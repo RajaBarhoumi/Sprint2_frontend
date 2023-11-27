@@ -12,6 +12,7 @@
           <th>Fibre</th>
           <th>Date Création</th>
           <th>Famille</th>
+          <th>Image</th>
           <th></th>
           <th></th>
         </tr>
@@ -27,6 +28,10 @@
             <td>{{ aliment.dateCreation | date : "dd/MM/yyyy" }}</td>
             
             <td>{{aliment.famille.nomFam}}</td>
+            <td><img class="card-img-top img-responsive"
+              src="{{apiurl+'/image/loadfromFS/'+aliment.idAliment}}"
+              style = "height :50px;width:100px">
+              </td>
             <td><a class="btn btn-danger" (click)="supprimerAliment(aliment)" *ngIf="authService.isAdmin()"
               >Supprimer</a></td>
             <td><a class="btn btn-success" [routerLink]="['/updateAliment',aliment.idAliment]" *ngIf="authService.isAdmin()"

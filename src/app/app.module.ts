@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AlimentsComponent } from './aliments/aliments.component';
 import { AddAlimentsComponent } from './add-aliments/add-aliments.component';
 import { UpdateAlimentComponent } from './update-aliment/update-aliment.component';
-import { HttpClientModule } from '@angular/common/http';
 import { RecherecheParFamilleComponent } from './rechereche-par-famille/rechereche-par-famille.component';
 import { RecherecheParNomComponent } from './rechereche-par-nom/rechereche-par-nom.component';
 import { SearchFilterPipe } from './search-filter.pipe';
@@ -16,6 +15,9 @@ import { ListeFamillesComponent } from './liste-familles/liste-familles.componen
 import { UpdateFamilleComponent } from './update-famille/update-famille.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token.interceptor';
+
 
 
 
@@ -43,7 +45,12 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 
     
   ],
-  providers: [],
+  providers: [
+    { provide : HTTP_INTERCEPTORS,
+      useClass : TokenInterceptor,
+      multi : true}
+      
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

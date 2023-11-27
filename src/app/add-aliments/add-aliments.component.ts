@@ -3,6 +3,7 @@ import { Aliment } from '../model/aliment.model';
 import { AlimentService } from '../services/aliment.service';
 import { Router } from '@angular/router';
 import { Famille } from '../model/famille.model';
+import { Image } from '../model/image.model';
 
 @Component({
   selector: 'app-add-aliments',
@@ -18,16 +19,25 @@ export class AddAlimentsComponent implements OnInit {
   newIdFam!: number;
   newFamille!: Famille;
 
+  uploadedImage!: File;
+  imagePath: any;
+
   constructor(private alimentService: AlimentService, private router: Router) {}
 
   addAliment() {
-    this.newAliment.famille = this.familles.find(
-      (fam) => fam.idFam == this.newIdFam
-    )!;
-    this.alimentService.ajouterAliment(this.newAliment).subscribe((alim) => {
-      console.log(alim);
+    this.newAliment.famille = this.familles.find(fam => fam.idFam
+      == this.newIdFam)!;
+      this.alimentService
+      .ajouterAliment(this.newAliment)
+      .subscribe((alim) => {
+      this.alimentService
+      .uploadImageFS(this.uploadedImage, 
+      this.uploadedImage.name,alim.idAliment!)
+      .subscribe((response: any) => {}
+      );
       this.router.navigate(['aliments']);
-    });
+      });
+      
   }
 
   ngOnInit(): void {
@@ -35,5 +45,14 @@ export class AddAlimentsComponent implements OnInit {
       console.log(fams);
       this.familles = fams._embedded.familles;
     });
+  }
+
+  onImageUpload(event: any) {
+    this.uploadedImage = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(this.uploadedImage);
+    reader.onload = (_event) => {
+      this.imagePath = reader.result;
+    };
   }
 }
